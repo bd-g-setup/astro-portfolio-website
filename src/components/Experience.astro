@@ -1,0 +1,56 @@
+---
+export interface Props {
+	company: string;
+	position: string;
+	date_range: string;
+}
+
+const { company, position, date_range } = Astro.props;
+---
+
+<li class="experience-card">
+	<div>
+		<h2 class="company-name">
+			{company}
+		</h2>
+		<h3>{position}</h3>
+		<h4>{date_range}</h4>
+	</div>
+</li>
+<style>
+	.experience-card {
+		list-style: none;
+		display: flex;
+		padding: 0.25rem;
+		background-color: white;
+		background-image: none;
+		background-size: 400%;
+		border-radius: 0.6rem;
+		background-position: 100%;
+		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+	}
+	.company-name {
+		margin: 0;
+    text-align: left;
+		font-size: 1.25rem;
+		transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+	}
+	h3 {
+		font-size: 1.1rem;
+		color: #333;
+		margin: 0.2rem 0;
+	}
+	h4 {
+		font-size: 1rem;
+		color: #666;
+		margin-bottom: 0.5rem;
+	}
+	.experience-card:is(:hover, :focus-within) {
+		background-position: 0;
+		background-image: var(--accent-gradient);
+	}
+	.experience-card:is(:hover, :focus-within) h2 {
+		color: rgb(var(--accent));
+	}
+</style>
